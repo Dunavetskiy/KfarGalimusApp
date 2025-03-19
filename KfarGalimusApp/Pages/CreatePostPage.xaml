@@ -1,0 +1,40 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KfarGalimusApp.Pages.CreatePostPage"
+             Title="CreatePostPage"
+             ControlTemplate="{StaticResource WaveTemplate}"
+             BackgroundColor="#dff0fe">
+
+    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*">
+
+        <VerticalStackLayout Grid.Row="0" Spacing="5">
+            <Label Text="Hello"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="5" Margin="10">
+
+            <Label Text="Title" FontSize="18" FontAttributes="Bold" TextColor="#81D4FA"/>
+            <Frame HeightRequest="45" Padding="0" HasShadow="True" BorderColor="DarkBlue"
+                   HorizontalOptions="FillAndExpand" BackgroundColor="LightCyan">
+                <Entry x:Name="TitleEntry" Placeholder="Title" TextColor="Black"/>
+            </Frame>
+
+            <Label Text="Content" FontSize="18" FontAttributes="Bold" TextColor="#81D4FA"/>
+            <Frame HeightRequest="70" Padding="0" HasShadow="True" BorderColor="DarkBlue"
+                   HorizontalOptions="FillAndExpand" BackgroundColor="LightCyan">
+                <Editor x:Name="ContentEntry" Placeholder="Content" AutoSize="TextChanges"
+                    TextColor="Black" />
+            </Frame>
+
+            <Label Text="Category" FontSize="18" FontAttributes="Bold" TextColor="#81D4FA"/>
+            <Frame HeightRequest="45" Padding="0" HasShadow="True" BorderColor="DarkBlue"
+                   HorizontalOptions="FillAndExpand" BackgroundColor="LightCyan">
+                <Picker x:Name="categoryPicker" Title="Select Category"
+                        ItemsSource="{Binding CategoryList}" SelectedIndex="0" />
+            </Frame>
+
+            <Button Text="Save" Clicked="OnSavePostClicked" WidthRequest="100" Margin="10"/>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

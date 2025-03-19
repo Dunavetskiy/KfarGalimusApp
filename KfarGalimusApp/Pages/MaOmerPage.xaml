@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KfarGalimusApp.Pages.MaOmerPage"
+             BackgroundColor="#dff0fe"
+             Shell.TabBarIsVisible="True">
+
+    <AbsoluteLayout>
+        <!-- Основной контент -->
+        <Grid Padding="10" RowSpacing="10" AbsoluteLayout.LayoutBounds="0,0,1,1"
+              AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Полоса фильтрации -->
+            <Grid Grid.Row="0" ColumnSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="AllLabel" Grid.Column="0" Text="All" FontSize="15" TextColor="Grey">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCategoryLabelTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label x:Name="GeneralLabel" Grid.Column="1" Text="General" FontSize="15" TextColor="Grey">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCategoryLabelTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label x:Name="NewsLabel" Grid.Column="2" Text="News" FontSize="15" TextColor="Grey">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCategoryLabelTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label x:Name="EsraLabel" Grid.Column="3" Text="Esra" FontSize="15" TextColor="Grey">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCategoryLabelTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label x:Name="CulturalClubLabel" Grid.Column="4" Text="Cultural Club" FontSize="15" TextColor="Grey">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCategoryLabelTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout x:Name="mainStackLayout" Spacing="10">
+                    <!-- Посты будут динамически добавляться -->
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+        <Button Text="+" Clicked="OnAddPostClicked"
+                FontAttributes="Bold"
+                FontSize="24"
+                WidthRequest="50"
+                HeightRequest="50"
+                CornerRadius="25"
+                BackgroundColor="#749db4"
+                TextColor="White"
+                AbsoluteLayout.LayoutBounds="1,1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Margin="0,0,15,15"/>
+    </AbsoluteLayout>
+</ContentPage>

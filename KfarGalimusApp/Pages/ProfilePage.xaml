@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KfarGalimusApp.ViewModels"
+             x:Class="KfarGalimusApp.Pages.ProfilePage"
+             x:DataType="vm:ProfileViewModel"
+             BackgroundColor="#dff0fe"
+             Title="Profile">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="20">
+
+                <Frame BackgroundColor="#FFFFFF" 
+                       CornerRadius="10" 
+                       Padding="15" 
+                       HorizontalOptions="Center">
+                    <StackLayout Spacing="10">
+                        <Image Source="{Binding AvatarUrl}" 
+                               Aspect="AspectFill" 
+                               HeightRequest="150" 
+                               WidthRequest="150"
+                               HorizontalOptions="Center" />
+                        <Button Text="Change Avatar" 
+                                Command="{Binding ChangeAvatarCommand}" 
+                                HorizontalOptions="Center"  />
+                    </StackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#FFFFFF" 
+                       CornerRadius="10" 
+                       Padding="15">
+                    <StackLayout Spacing="10">
+                        <Label Text="Start info" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#007BFF" />
+
+                        <Label Text="User name" 
+                               FontSize="14" 
+                               TextColor="Black" />
+                        <Entry Text="{Binding UserName, Mode=TwoWay}" 
+                               Placeholder="Введите имя" 
+                               BackgroundColor="#E3F2FD" 
+                               TextColor="Black" 
+                               FontSize="14" 
+                               HeightRequest="40" />
+
+                        <Label Text="Email" 
+                               FontSize="14" 
+                               TextColor="Black" />
+                        <Entry Text="{Binding Email, Mode=TwoWay}" 
+                               Placeholder="Введите email" 
+                               BackgroundColor="#E3F2FD" 
+                               TextColor="Black" 
+                               FontSize="14" 
+                               HeightRequest="40" 
+                               IsReadOnly="True" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Роль -->
+                <Frame BackgroundColor="#FFFFFF" 
+                       CornerRadius="10" 
+                       Padding="15">
+                    <StackLayout Spacing="10">
+                        <Label Text="Role" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#007BFF" />
+                        <Picker Title="Change your role" 
+                                ItemsSource="{Binding Roles}" 
+                                SelectedItem="{Binding SelectedRole}" 
+                                BackgroundColor="#E3F2FD" 
+                                TextColor="Black" 
+                                FontSize="14" 
+                                HeightRequest="40"  />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Интересы -->
+                <Frame BackgroundColor="#FFFFFF" 
+                       CornerRadius="10" 
+                       Padding="15">
+                    <StackLayout Spacing="10">
+                        <Label Text="Interests" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#007BFF" />
+                        <Entry Text="{Binding InterestsInput, Mode=TwoWay}" 
+                               Placeholder="Введите интересы через запятую" 
+                               BackgroundColor="#E3F2FD" 
+                               TextColor="Black" 
+                               FontSize="14" 
+                               HeightRequest="40" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Кнопка сохранения -->
+                <Button Text="Save Profile" 
+                        Command="{Binding SaveProfileCommand}" 
+                        HorizontalOptions="Fill"  />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

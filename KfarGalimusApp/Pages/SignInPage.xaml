@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KfarGalimusApp.ViewModels"
+             xmlns:handlers="clr-namespace:KfarGalimusApp.Handlers"
+             x:DataType="vm:SignInViewModel"
+             x:Class="KfarGalimusApp.Pages.SignInPage"
+             Title="SignInPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             ControlTemplate="{StaticResource WaveTemplate}"
+             BackgroundColor="#dff0fe">
+
+    <Grid RowDefinitions="Auto,*">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Welcome!" FontSize="24" TextColor="#1565C0" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="50" WidthRequest="56" CornerRadius="28">
+                        
+                        <Image Source="dotnet_bot.png" />
+
+                    </Frame>
+                    <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                        <handlers:BorderLessEntry Text="{Binding SignInModel.Email}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" />
+                    </Frame>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="50" WidthRequest="56" CornerRadius="28">
+                        <Label Text="Image" TextColor="Black" WidthRequest="20"/>
+                    </Frame>
+                    <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                        <handlers:BorderLessEntry Text="{Binding SignInModel.Password}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password"/>
+                    </Frame>
+                </StackLayout>
+                
+                <Button Text="Sign In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" Command="{Binding SignInCommand}"/>
+                
+                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                    <Label Text="Don't have an account?" TextColor="#1565C0" HorizontalTextAlignment="Center" Margin="10"/>
+                    <Button Text="Sign Up" WidthRequest="100" CornerRadius="20" Command="{Binding NavigateSignUpCommand}"/>
+                </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+       
+    </Grid>
+
+</ContentPage>

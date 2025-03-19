@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:handlers="clr-namespace:KfarGalimusApp.Handlers"
+             xmlns:vm="clr-namespace:KfarGalimusApp.ViewModels"
+             x:DataType="vm:SignUpViewModel"
+             x:Class="KfarGalimusApp.Pages.SignUpPage"
+             Title="SignUpPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             ControlTemplate="{StaticResource WaveTemplate}"
+             BackgroundColor="#dff0fe">
+
+    <Grid RowDefinitions="Auto,*">
+        <ScrollView Grid.Row="0">
+
+            <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        VerticalOptions="Center">
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Register a new account" FontSize="24" TextColor="#1565C0" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Email -->
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="50" WidthRequest="56" CornerRadius="28">
+
+                        <Image Source="dotnet_bot.png" />
+
+                    </Frame>
+                    <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                        <handlers:BorderLessEntry Text="{Binding SignUpModel.Email}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email of the school"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Username -->
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="50" WidthRequest="56" CornerRadius="28">
+                        <Label Text="Image" TextColor="Black" WidthRequest="20"/>
+                    </Frame>
+                    <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                        <handlers:BorderLessEntry Text="{Binding SignUpModel.UserName}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="User Name   (max 15 characters)"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Password -->
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="50" WidthRequest="56" CornerRadius="28">
+                        <Label Text="Image" TextColor="Black" WidthRequest="20"/>
+                    </Frame>
+                    <Frame HeightRequest="45" Margin="-20,0,0,0" Padding="0" HasShadow="True" BorderColor="White" HorizontalOptions="FillAndExpand">
+                        <handlers:BorderLessEntry Text="{Binding SignUpModel.Password}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password    (at least 6 characters)"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Sign Up Button -->
+                <Button Text="Sign Up" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" Command="{Binding SignUpCommand}"/>
+
+                <!-- Navigation to SignIn -->
+                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+                    <Label Text="Already have an account?" TextColor="#1565C0" HorizontalTextAlignment="Center"/>
+                    <Button Text="Sign in" WidthRequest="100" CornerRadius="20" Command="{Binding NavigateSignInCommand}"/>
+                </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

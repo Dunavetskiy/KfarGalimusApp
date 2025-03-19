@@ -1,15 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="KfarGalimusApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:KfarGalimusApp"
-    Shell.FlyoutBehavior="Disabled"
-    Title="KfarGalimusApp">
+    xmlns:pages="clr-namespace:KfarGalimusApp.Pages"
+    xmlns:vm="clr-namespace:KfarGalimusApp.ViewModels"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.BackgroundColor="#F0F8FF"
+    x:DataType="vm:AppShellViewModel"
+    Shell.TabBarBackgroundColor="#dff0fe"
+    Shell.TabBarTitleColor="#021f2f"
+    Shell.TabBarUnselectedColor="#1b3543"
+    Shell.ForegroundColor="White"
+    Shell.NavBarIsVisible="False"
+    >
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
 
+    <ShellContent FlyoutItemIsVisible="False" Shell.FlyoutBehavior="Disabled"
+    ContentTemplate="{DataTemplate pages:LoadingPage}" Route="LoadingPage"/>
+
+    <ShellContent Route="OnboardingPage"
+                  ContentTemplate="{DataTemplate pages:OnboardingPage}" />
+
+
+    <ShellContent Route="SignUpPage"
+              ContentTemplate="{DataTemplate pages:SignUpPage}" 
+              FlyoutItemIsVisible="False"/>
+
+    <TabBar>
+        <Tab Title="MaOmer?">
+            <ShellContent ContentTemplate="{DataTemplate pages:MaOmerPage}" Route="MaOmerPage"/>
+        </Tab>
+        <Tab Title="Profile">
+            <ShellContent ContentTemplate="{DataTemplate pages:ProfilePage}" Route="ProfilePage"/>
+        </Tab>
+            <Tab Title="CultureClub">
+                <ShellContent ContentTemplate="{DataTemplate pages:CultureClub}" Route="CultureClubPage"/>
+        </Tab>
+    </TabBar>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Button Text="Sign Out" Command="{Binding LogoutCommand}"/>
+        </StackLayout>
+    </Shell.FlyoutFooter>
 </Shell>

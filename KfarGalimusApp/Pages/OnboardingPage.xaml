@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shapes="http://schemas.microsoft.com/dotnet/2021/maui"
+             x:Class="KfarGalimusApp.Pages.OnboardingPage"
+             BackgroundColor="#F0F8FF"
+             Shell.TabBarIsVisible="False">
+    <!-- Цвет волны как фон для всей страницы -->
+
+    <Grid RowDefinitions="70,70,70,*" Margin="0,30,0,0">
+
+        <!-- Волны и текст в первых трёх рядах -->
+        <Grid Grid.Row="0">
+            <shapes:Path Stroke="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="150">
+                <shapes:Path.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#81D4FA" Offset="0.0" />
+                        <GradientStop Color="#FFFFFF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </shapes:Path.Fill>
+                <shapes:Path.Data>
+                    <shapes:PathGeometry Figures="M0,60 C75,20 150,100 225,60 C300,20 375,100 450,60 L450,150 L0,150 Z" />
+                </shapes:Path.Data>
+            </shapes:Path>
+            <Label 
+                Text="Welcome to the Posts Section" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                TextColor="#004D40" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Margin="0,40,0,0" 
+            />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <shapes:Path x:Name="WavePath" Stroke="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="150">
+                <shapes:Path.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#6d6bd9" Offset="0.0" />
+                        <GradientStop Color="#FFFFFF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </shapes:Path.Fill>
+                <shapes:Path.Data>
+                    <!-- Путь будет обновляться через C# -->
+                    <shapes:PathGeometry x:Name="WavePathGeometry">
+                        <shapes:PathGeometry.Figures>
+                            <shapes:PathFigure StartPoint="0,60">
+                                <shapes:BezierSegment Point1="75,20" Point2="150,100" Point3="225,60" />
+                                <shapes:BezierSegment Point1="300,20" Point2="375,100" Point3="450,60" />
+                                <shapes:LineSegment Point="450,150" />
+                                <shapes:LineSegment Point="0,150" />
+                            </shapes:PathFigure>
+                        </shapes:PathGeometry.Figures>
+                    </shapes:PathGeometry>
+                </shapes:Path.Data>
+            </shapes:Path>
+            <Label 
+                Text="Welcome to the Posts Section" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                TextColor="#004D40" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Margin="0,40,0,0" 
+            />
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <shapes:Path Stroke="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="150">
+                <shapes:Path.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#201e91" Offset="0.0" />
+                        <GradientStop Color="#201e91" Offset="1.0" />
+                    </LinearGradientBrush>
+                </shapes:Path.Fill>
+                <shapes:Path.Data>
+                    <shapes:PathGeometry Figures="M0,60 C75,20 150,100 225,60 C300,20 375,100 450,60 L450,150 L0,150 Z" />
+                </shapes:Path.Data>
+            </shapes:Path>
+            
+            
+
+            <Label 
+                Text="Welcome to the Posts Section" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                TextColor="White" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Margin="0,40,0,0" 
+            />
+        </Grid>
+
+        <!-- Последняя волна и фон под ней -->
+        <Grid Grid.Row="3">
+            <!-- Волна -->
+            <shapes:Path Stroke="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="150">
+                <shapes:Path.Fill>
+                    <SolidColorBrush Color="#201e91" />
+                    <!-- Цвет волны -->
+                </shapes:Path.Fill>
+                <shapes:Path.Data>
+                    <shapes:PathGeometry Figures="M0,60 C75,20 150,100 225,60 C300,20 375,100 450,60 L450,150 L0,150 Z" />
+                </shapes:Path.Data>
+            </shapes:Path>
+
+            <!-- Основной фон для всего нижнего блока -->
+            <BoxView 
+                Color="#201e91" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand" 
+            />
+
+            <!-- Кнопки внутри фона -->
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+                <Button 
+                    Text="Sign In"
+                    Clicked="OnSignInClicked"
+                    WidthRequest="200" 
+                    HeightRequest="50" 
+                    BackgroundColor="#FFFFFF" 
+                    TextColor="#201e91" 
+                    CornerRadius="25" 
+                    FontAttributes="Bold" 
+                />
+
+                <Button 
+                    Text="Sign Up"
+                    Clicked="OnSignUpClicked"
+                    WidthRequest="200" 
+                    HeightRequest="50" 
+                    BackgroundColor="#FFFFFF" 
+                    TextColor="#201e91" 
+                    CornerRadius="25" 
+                    FontAttributes="Bold" 
+                />
+            </StackLayout>
+            <Label 
+                x:Name="WelcomeLabel"
+                Text="Welcome to our application!" 
+                FontSize="22" 
+                FontAttributes="Bold" 
+                TextColor="White" 
+                HorizontalOptions="Center" 
+                VerticalOptions="End" 
+                Opacity="1"
+                Margin="5,20,5,20" 
+                />
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

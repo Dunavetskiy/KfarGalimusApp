@@ -2,13 +2,38 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:KfarGalimusApp"
-             x:Class="KfarGalimusApp.App">
+             xmlns:pages="clr-namespace:KfarGalimusApp.Pages"
+             x:Class="KfarGalimusApp.App"
+             xmlns:shapes="http://schemas.microsoft.com/dotnet/2021/maui">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Определение шаблона волны -->
+            <ControlTemplate x:Key="WaveTemplate">
+                <Grid RowDefinitions="*,Auto">
+                    <ContentPresenter Grid.Row="0"/>
+
+                    <!-- Волна внизу страницы -->
+                    <shapes:Path Stroke="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="150" VerticalOptions="End" Grid.Row="1">
+                        <shapes:Path.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#81D4FA" Offset="0.0" />
+                                <GradientStop Color="#ecf6ff" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </shapes:Path.Fill>
+                        <shapes:Path.Data>
+                            <shapes:PathGeometry Figures="M0,60 C75,20 150,100 225,60 C300,20 375,100 450,60 L450,150 L0,150 Z" />
+                        </shapes:Path.Data>
+                    </shapes:Path>
+                </Grid>
+            </ControlTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>
